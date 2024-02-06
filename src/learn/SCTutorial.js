@@ -18,7 +18,7 @@ export default class SCTutorial extends Component {
           </div>
           <div className="workspace">
             <div className="mid">
-              <div className="tutorialWrapper">
+              <div className="Article">
                 <div className="heading1">Heading 1</div>
                 <div className="paragraph">
                   <p>
@@ -28,10 +28,45 @@ export default class SCTutorial extends Component {
                   </p>
                 </div>  
                 <div className="heading2">Heading 2</div>
+                <div className="paragraph">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nostrum molestiae quis sed eum expedita harum optio dolore, ex mollitia,  
+                     <span className="highlight">fuga</span>
+                    officia fugit consequatur aperiam quaerat quo. Consequuntur, aut illum.
+                  </p>
+                </div>  
                 <div className="heading3">Heading 3</div>
+                <div className="paragraph">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nostrum molestiae quis sed eum expedita harum optio dolore, ex mollitia,  
+                     <span className="highlight">fuga</span>
+                    officia fugit consequatur aperiam quaerat quo. Consequuntur, aut illum.
+                  </p>
+                </div>  
                 <div className="heading4">Heading 4</div>
+                <div className="paragraph">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nostrum molestiae quis sed eum expedita harum optio dolore, ex mollitia,  
+                     <span className="highlight">fuga</span>
+                    officia fugit consequatur aperiam quaerat quo. Consequuntur, aut illum.
+                  </p>
+                </div>  
                 <div className="heading5">Heading 5</div>
+                <div className="paragraph">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nostrum molestiae quis sed eum expedita harum optio dolore, ex mollitia,  
+                     <span className="highlight">fuga</span>
+                    officia fugit consequatur aperiam quaerat quo. Consequuntur, aut illum.
+                  </p>
+                </div>  
                 <div className="heading6">Heading 6</div>
+                <div className="paragraph">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nostrum molestiae quis sed eum expedita harum optio dolore, ex mollitia,  
+                     <span className="highlight">fuga</span>
+                    officia fugit consequatur aperiam quaerat quo. Consequuntur, aut illum.
+                  </p>
+                </div>  
                 {/*
                 heading1
                 heading2
@@ -71,6 +106,7 @@ export default class SCTutorial extends Component {
                   </ul>
                 </div>
                 <span className='link'>link</span>
+                div.
                 {/* tutorialWrapper */}
               </div>
             </div>
