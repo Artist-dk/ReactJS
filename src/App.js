@@ -5,6 +5,7 @@ import State from './learn/State';
 import Ref from './learn/Ref';
 import PropDrilling from './learn/PropDrilling';
 import Context from './learn/ContextAPI';
+import SCTutorial from './learn/SCTutorial';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <Effect /> */}
       {/* <Ref /> */}
       {/* <PropDrilling /> */}
-      <Context />
+      {/* <Context /> */}
+      <SCTutorial />
     </div>
   );
 }
