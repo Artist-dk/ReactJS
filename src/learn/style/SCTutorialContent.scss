@@ -1,0 +1,55 @@
+.workspace {
+  .heading1 {
+    font-size: 48px;
+    font-weight: 800;
+    border-width: 300px;
+  }
+  .heading2 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .heading3 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .heading4 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+  .heading5 {
+    font-size: 28px;
+    font-weight: 400;
+  }
+  .heading6 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
+    border-color: #889;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-bottom: solid 1px;
+    margin-bottom: 5px;
+  }
+
+  // paragraph
+  .paragraph {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  // 
+  
+  .orderedList-enNum, .unOrderedList-disc {
+    margin: 10px 0 10px 30px;
+  }
+  .highlight {
+    background: #ffff0060;
+    padding: 0 0 4px 0;
+  }
+  .link {
+    color: #08f;
+    padding: 5px;
+    border-radius: 3px;
+  }
+}

@@ -1,0 +1,92 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #112;
+  opacity: .5;
+}
+::-webkit-scrollbar-thumb {
+  background: #223;
+  margin: 3px;
+  padding: 3px;
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: solid 2px #112;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #223;
+  margin: 3px;
+  padding: 3px;
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: none;
+}
+.editTutorial {
+  .mid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .tutorialWrapper {
+    padding: 40px;
+  }
+  .topNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    box-sizing: border-box;
+    background: #112;
+    color: #fff;
+    padding: 5px;
+  }
+  .leftNav {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 100px;
+    background: #112;
+    color: #fff;
+    height: calc(100vh - 80px);
+  }
+  .workspace {
+    position: fixed;
+    overflow: auto;
+    top: 50px;
+    left: 100px;
+    right: 100px;
+    background: black;
+    color: #fff;
+    height: calc(100vh - 80px);
+  }
+  .rightNav {
+    position: fixed;
+    top:50px;
+    right: 0;
+    width: 100px;
+    background: #112;
+    color: #fff;
+    height: calc(100vh - 80px);
+  
+  }
+  .bottomStatusBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: #223;
+  }
+  .leftNav {
+    button {
+      padding: 2px 8px;
+      background: #223;
+      color: #666;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
