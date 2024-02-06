@@ -29,7 +29,11 @@
     margin: 0 auto;
   }
   .Article {
+    background: black;
     padding: 40px;
+    * {
+      // color: black;
+    }
   }
   .topNav {
     position: fixed;
@@ -88,5 +92,48 @@
       width: 100%;
       box-sizing: border-box;
     }
+  }
+  table {
+    th, td {
+      padding: 5px 10px;
+      border: solid 1px #55556650;
+      text-align: left;
+    }
+    th {
+      background: #334;
+    }
+    td {
+      background: #112;
+    }
+  }
+  .exBox {
+    padding: 10px 20px;
+    background: #112;
+    margin: 10px 5px;
+    // border: solid 1px #aaaaaa50;
+    border-radius: 10px;
+  }
+  .sectionA, .sectionB, .sectionC, .sectionD, .sectionE {
+    border-left: solid 14px;
+    background: #112;
+    padding: 10px;
+    // background: red;
+    margin: 10px 5px;
+    border-radius: 10px;
+  }
+  .sectionA {
+    border-color: #3498db ;
+  }
+  .sectionB {
+    border-color: #2ecc71 ;
+  }
+  .sectionC {
+    border-color: #e67e22 ;
+  }
+  .sectionD {
+    border-color: #9b59b6 ;
+  }
+  .sectionE {
+    border-color: #e74c3c ;
   }
 }

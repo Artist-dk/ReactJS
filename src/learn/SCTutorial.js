@@ -106,7 +106,45 @@ export default class SCTutorial extends Component {
                   </ul>
                 </div>
                 <span className='link'>link</span>
-                div.
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Parameter	</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                      <th>Head</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id</td>
+                      <td>string</td>
+                      <td>Required. Id of item to fetch</td>
+                      <td>tdata</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="exBox">
+                  This is an Example... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eveniet temporibus illo perferendis dolorum consequatur perspiciatis expedita eligendi, libero non molestiae fuga voluptatibus vero nesciunt veniam esse ut molestias! Repellat.
+                </div>
+                <div className="sectionA">
+                  This is sectionA
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus error consequatur similique? Exercitationem sint eos nihil, natus ducimus quos iusto rem aliquam, praesentium officia repellat unde repudiandae. In, quae necessitatibus!
+                </div>
+                <div className="sectionB">
+                  This is sectionB
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident totam harum non explicabo quas eum ut at magni, quam excepturi vero numquam debitis, sed natus aut repudiandae distinctio! Maxime, nam.
+                </div>
+                <div className="sectionC">
+                  This is sectionC Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia accusantium quam suscipit minus impedit aspernatur vel nam minima laboriosam aut maxime, debitis natus. Qui ipsum perferendis, itaque quam mollitia impedit.
+                </div>
+                <div className="sectionD">
+                  This is sectionD Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente quo, vero eveniet laboriosam sunt aliquam ipsum distinctio repellat deserunt nam voluptatum blanditiis ipsam dolore quaerat voluptate excepturi. Sunt, nostrum minus.
+                </div>
+                <div className="sectionE">
+                  This is sectionE Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam officiis aspernatur illum ea quos. Nam aliquam repellat minima quos officiis facere totam, perferendis suscipit, obcaecati ipsum maiores at, dolores vero?
+                </div>
                 {/* tutorialWrapper */}
               </div>
             </div>
