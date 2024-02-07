@@ -6,6 +6,7 @@ import Ref from './learn/Ref';
 import PropDrilling from './learn/PropDrilling';
 import Context from './learn/ContextAPI';
 import SCTutorial from './learn/SCTutorial';
+import SCChatApp from './learn/SCChatApp';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <Ref /> */}
       {/* <PropDrilling /> */}
       {/* <Context /> */}
-      <SCTutorial />
+      {/* <SCTutorial /> */}
+      <SCChatApp />
     </div>
   );
 }
