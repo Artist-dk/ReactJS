@@ -1,160 +1,204 @@
-import React, { useState } from 'react'
-// import Main from './SSChatApp/Main';
-import './SSChatApp/style.scss';
-import Lsidebar from './SSChatApp/Lsidebar';
+import React, { useEffect, useState, useRef } from 'react'
+// import Home from './SSChatApp/Home';
+import Main from './SSChatApp/Main';
+// import Lsidebar from './SSChatApp/Lsidebar';
+import './SSChatApp/style.scss'
 
 
+const imgUrl = 'https://i.pinimg.com/originals/20/c0/0f/20c00f0f135c950096a54b7b465e45cc.jpg'
 function open(e) {
   e = e.currentTarget;
   var lsb = document.querySelector(".lsidebar")
-    if(e.classList.value.match("active-icon")) {
-        e.classList.remove('active-icon')
-        lsb.classList.remove('lsidebar-show')
+    if(e.classList.value.match("activeIcon")) {
+        e.classList.remove('activeIcon')
+        lsb.classList.remove('lsidebarShow')
     } else {
-        e.classList.toggle('active-icon')
-        lsb.classList.toggle('lsidebar-show')
+        e.classList.toggle('activeIcon')
+        lsb.classList.toggle('lsidebarShow')
     }
 }
 
 
-export default function Student() {
+// function loadChat() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('post','loadChat.php',true); 
+//   xhr.onload = function() {
+//       var id = document.querySelector('.chat-body');
+//       if(lcObj.txt != this.responseText) {
+//           lcObj.txt = this.responseText;
+//           id.innerHTML = this.responseText;
+//           if(lcObj.scroll) {
+//               id.scrollTop = id.scrollHeight;
+//           }
+//       }
+//       if(lcObj.cond) {
+//           lcObj.interval = setInterval(loadChat, 1000);
+//           lcObj.cond = false;
+//       }
+//   }
+//   xhr.send();
+// }
+
+export default function SCChatApp() {
+  
+  const lSidebarCont = useRef("")
+  const [lSidebarContContent, setlSidebarContContent] = useState([1,2,31,2,31,2,31,2,31,2,3]);
+  const updateContactList = () => {
+    // 
+    // lSidebarCont.current.innerHTML = 
+  }
+  updateContactList();
+  // console.log(lSidebarCont.current.innerHTML)
+
+  // const [data, setData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/users');
+        const result = await response.json();
+        console.log(result)
+        setlSidebarContContent(result);
+        console.log(lSidebarContContent)
+        console.log(lSidebarContContent[0].message)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  // if(data) 
+  // console.log(data)
+
+  const [page, setPage] = useState(<Main />)
   return (
     <>
-    
-<div class="body-flex">
-    <div class="head">
-        <div class="head-cont">
-            <div class="title-cont">
-                <div>
-                    <span class="title-bg"></span>
-                    <span class="title"><h2>CHATAPP</h2></span>
-                </div>
+    <div className="dashboard">
+        <div className="lsidebar lsidebarShow">
+            <div className="lsb-head">
+                  <div className="AppLogo">
+                      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                          <path stroke="red" strokeWidth="39" d="M0 40 0 0 40 0 " fill="transparent"/>
+                          <path stroke="red" strokeWidth="39" d="M60 0 100 0 100 40 " fill="transparent" />
+                          <path stroke="red" strokeWidth="39" d="M0 60 0 100 40 100" fill="transparent" />
+                          <path stroke="red" strokeWidth="39" d="M60 100 100 100 100 60 " fill="transparent" />
+                      </svg>
+                  </div>
+                  <div>StudyCircle</div>
+              <div className="icon" onClick={function(e){open(e)}}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </div>
+          </div>
+          <div className="lsb-body">
+            <div ref={lSidebarCont} className="lsidebar-cont">
+              {lSidebarContContent.map(()=> (
+              <div  className="friend-li">
+                  <div className="friend-img-cont">
+                      <img src={imgUrl} alt="" />
+                  </div>
+                  <div className="friend-info-cont">
+                      <div>
+                          <div className="friend-info-name">Sundar pichai</div>
+                          <div className="friend-info-id">sundar_p</div>
+                      </div>
+                  </div>
+              </div>
+              ))}
             </div>
-            <div class="nav">
-                <span class="aaaaaa1 var" onclick="aaaaaa(event, 'aaaaab1')">Home</span>
-                <span class="aaaaaa1 var" onclick="aaaaaa(event, 'aaaaab1')">Messages</span>
-                <span class="aaaaaa1 active" id="_setting" onclick="aaaaaa(event, 'aaazaa1')">Settings</span>
-                <span class="aaaaaa1 var" id="_info" onclick="aaaaaa(event, 'aaaaaa1')">Profile</span>
-                <span class="aaaaaa1 var" id="_info" onclick="aaaaaa(event, 'aaaaaa1')">Notifications</span>
-                <span class="aaaaaa1 var" id="_info" onclick="aaaaaa(event, 'aaaaaa1')">Shorts</span>
-            </div>
+          </div>
         </div>
-    </div>
-    <div class="body">
-        <Lsidebar />
-        <div class="main">
-            {/* <div class="aaaaab1 var container-main" id="aaazaa1">
-                <div class="settings-main">
-                    <div class="form-cont">
-                        <div class="heading">
-                            <h2>Personal Details:</h2>
+        <div className="body">
+          <div className="main">
+            <div className="chatMain">
+                <div className="chatHead">
+                    <div className="grid1">
+                        <div className="imgCont">
+                            <img src={imgUrl} alt="" />
                         </div>
-                        <form action="signin.php" method="post">
-                            <div class="inputBox">
-                                <input type="text" name="fname" id="" required />
-                                <span class="input-label">Fname</span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="lname" id="" required />
-                                <span class="input-label">Lname</span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="username" id="" required />
-                                <span class="input-label">Username</span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="gender" id="" required />
-                                <span class="input-label">Gender</span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="phone" id="" required />
-                                <span class="input-label">Phone</span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <div class="inputBox">
-                                <input type="file" name="profile-pic" id="" />
-                                <span class="input-label">Profile picture: </span>
-                                <i class="input-bg"></i>
-                            </div>
-                            <!--
-                            <div class="inputBox">
-                                <input  type="submit" value="Save" id="" />
-                            </div>--> 
-                            <br />
-                            <br />
-                            <hr />
-                            <div class="link">
-                                <span class=" ">Public profile</span>
-                            </div>
-                            <div class="link">
-                                <span class=" ">Personal details</span>
-                            </div>
-                            <div class="link">
-                                <span class="">Manage account</span>
-                            </div>
-                            <div class="link">
-                                <span class="">Theme</span>
-                            </div>
-                            <div class="link">
-                                <span class="">Privacy</span>
-                            </div>
-                            <div class="link">
-                                <span class="">Help</span>
-                            </div>
-                            <div class="link">
-                                <span class=" _logout">Log out</span>
-                            </div>
-                            <div class="link">
-                                <span class="">Switch to other account</span>
-                            </div>
-                            <div class="link">
-                                <span class="">About</span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> */}
-
-
-            <div class="aaaaab1 hidden container-main info-main" id="aaaaaa1"></div>
-
-
-            <div class="container-main">
-                <div class="chat-main-psudo hidden">
-                    <h1>Welcome in ChatAPP!</h1>
-                </div>
-                <div class="chat-main">
-                    <div class="chat-head">
-                        <div class="grid-1">
-                            <div class="img-cont">
-                                <img src="" alt="" />
-                            </div>
-                            <div class="name-cont">
-                            </div>
+                        <div className="detailsCont">
+                            <div className="name">Sundar pichai</div>
+                            <div className="status">online</div>
                         </div>
-                        <div>
-                            <img src="" alt="" />
-                        </div>
-                    </div>
-                    <div class="chat-body">
-                    </div>
-                    <div class="chat-footer">
-                        <div class="inputs">
-                            <input type="text" placeholder="Message" ame="text" id="_msg" />
-                            <button id="_sendMsg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M3.4 20.4l17.45-7.48c.81-.35.81-1.49 0-1.84L3.4 3.6c-.66-.29-1.39.2-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"/></svg>
+                        <div className="btnCont">
+                            <button>
+                                <svg stroke="currentColor" fill="none" strokeWidth="3" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                             </button>
                         </div>
                     </div>
                 </div>
+                <div className="chatBody">
+                    <div className="msg-cont-b">
+                        <div className="msg-body">
+                            <div className="msg-bg">
+                                <div className="msg-text">Hi!</div>
+                            </div>
+                            <div className="msg-time">
+                                <span>7:09 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="msg-cont-a">
+                        <div className="msg-body">
+                            <div className="msg-bg">
+                                <div className="msg-text">Hi!</div>
+                            </div>
+                            <div className="msg-time">
+                                <span>7:09 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="msg-cont-b">
+                        <div className="msg-body">
+                            <div className="msg-bg">
+                                <div className="msg-text">Digambar Kumbhar
+                                    @sketcher_dk
+                                    SKETCHER | PORTRAITURE - GRAPHITE PENCIL
+                                    98 followers
+                                    ·
+                                    0 following
+                                    </div>
+                            </div>
+                            <div className="msg-time">
+                                <span>7:09 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="msg-cont-a">
+                        <div className="msg-body">
+                            <div className="msg-bg">
+                                <div className="msg-text">Digambar Kumbhar
+                                    @sketcher_dk
+                                    SKETCHER | PORTRAITURE - GRAPHITE PENCIL
+                                    98 followers
+                                    ·
+                                    0 following
+                                    </div>
+                            </div>
+                            <div className="msg-time">
+                                <span>7:09 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="chat-footer">
+                    <div className="inputs">
+                        <button>
+                            <svg viewBox="0 0 20 20" fill="currentColor" strokeWidth="3" width="16px" height="16px"><path d="M10,0a10,10,0,1,0,9.85,8.26A10,10,0,0,0,10,0Zm0,19A9,9,0,1,1,18.87,8.44,9.11,9.11,0,0,1,19,10,9,9,0,0,1,10,19Zm4.23-6.88a4.5,4.5,0,0,1-8.72,0l1-.25a3.5,3.5,0,0,0,6.78,0ZM8,8A1,1,0,1,1,7,7,1,1,0,0,1,8,8Zm6,0a1,1,0,1,1-1-1A1,1,0,0,1,14,8Z"></path></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality"  clipRule="evenodd" viewBox="0 0 397 511.92"><path  d="M370.42 212.78c4.94-6.51 14.23-7.78 20.73-2.85 6.51 4.94 7.78 14.23 2.84 20.73L216.08 464.63c-20.06 26.3-49.03 42.03-79.53 46.18-30.03 4.09-61.64-3.04-87.78-22.38a15.67 15.67 0 0 1-2.56-1.94c-25.65-20.04-41.01-48.64-45.1-78.71-4.09-30.05 3.06-61.66 22.39-87.79.53-.88 1.16-1.71 1.86-2.47L239.33 36.15c16.39-19.23 34.57-31.3 54.79-34.97 20.41-3.71 41.94 1.25 64.75 16.18l.97.69.26.2.03.02c10.88 8.4 19.01 17.76 24.58 27.84 5.98 10.85 8.96 22.5 9.17 34.68.27 16.39-3.62 30.03-9.87 42.56-5.75 11.55-13.57 22.01-21.92 32.99l-198.2 260.67c-8.38 11.02-20.48 17.61-33.2 19.34-12.16 1.66-24.98-1.14-35.71-8.75-.96-.57-1.86-1.25-2.69-2.05-10.23-8.32-16.36-19.95-18.03-32.15-1.71-12.69 1.4-26.09 9.76-37.09L255.26 131.1c4.93-6.5 14.22-7.77 20.73-2.84 6.5 4.94 7.77 14.23 2.84 20.73L107.59 374.2c-3.4 4.48-4.66 10-3.95 15.26.71 5.22 3.4 10.17 7.86 13.56l.05.05c4.46 3.36 9.96 4.61 15.2 3.9 5.23-.71 10.18-3.39 13.57-7.85l198.2-260.67c7.26-9.55 14.07-18.66 18.9-28.34 4.33-8.68 7.02-17.98 6.85-28.86-.12-7.25-1.94-14.25-5.57-20.85-3.56-6.45-8.94-12.61-16.3-18.34-16.01-10.43-30.3-14.04-43.06-11.73-13.02 2.37-25.5 11.03-37.5 25.07L48.04 336.59c-15.1 19.85-20.69 44.13-17.55 67.24 3.08 22.65 14.58 44.16 33.77 59.22.75.46 1.47 1 2.14 1.62 19.67 14.5 43.51 19.85 66.21 16.76 22.67-3.08 44.19-14.61 59.24-33.82.48-.76 1.03-1.48 1.65-2.17l176.92-232.66z"/></svg>
+                        </button>
+                        <input type="text" placeholder="Message" ame="text" id="_msg" autoComplete="off" />
+                        <button id="_sendMsg">
+                            <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"  height="24px" width="24px" xmlns="http://www.w3.org/2000/svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
     </>
   )
 }
