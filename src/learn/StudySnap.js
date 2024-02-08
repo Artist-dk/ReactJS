@@ -1,45 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
-// import Home from './SSChatApp/Home';
-// import Main from './SSChatApp/Main';
-// import Lsidebar from './SSChatApp/Lsidebar';
-import './SSChatApp/style.scss'
+
+import './StudySnap/style.scss'
+export default function StudySnap() {
+  const imgUrl = 'https://i.pinimg.com/originals/20/c0/0f/20c00f0f135c950096a54b7b465e45cc.jpg'
+
+    
 
 
-const imgUrl = 'https://i.pinimg.com/originals/20/c0/0f/20c00f0f135c950096a54b7b465e45cc.jpg'
-function open(e) {
-//   e = e.currentTarget;
-//   var lsb = document.querySelector(".lsidebar")
-//     if(e.classList.value.match("activeIcon")) {
-//         e.classList.remove('activeIcon')
-//         lsb.classList.remove('lsidebarShow')
-//     } else {
-//         e.classList.toggle('activeIcon')
-//         lsb.classList.toggle('lsidebarShow')
-//     }
-}
-
-
-// function loadChat() {
-//   var xhr = new XMLHttpRequest();
-//   xhr.open('post','loadChat.php',true); 
-//   xhr.onload = function() {
-//       var id = document.querySelector('.chat-body');
-//       if(lcObj.txt != this.responseText) {
-//           lcObj.txt = this.responseText;
-//           id.innerHTML = this.responseText;
-//           if(lcObj.scroll) {
-//               id.scrollTop = id.scrollHeight;
-//           }
-//       }
-//       if(lcObj.cond) {
-//           lcObj.interval = setInterval(loadChat, 1000);
-//           lcObj.cond = false;
-//       }
-//   }
-//   xhr.send();
-// }
-
-export default function SCChatApp() {
   
   const [lSidebarContContent, setlSidebarContContent] = useState([1,2,31,2,31,2,31,2,31,2,3]);
   useEffect(() => {
@@ -76,63 +43,46 @@ export default function SCChatApp() {
   // if(data) 
   // console.log(data)
 
+
   return (
-    <>
-    <div className="dashboard">
-        <div className="lsidebar lsidebarShow">
-            <div className="lsb-head">
-                  <div className="AppLogo">
-                      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                          <path stroke="red" strokeWidth="39" d="M0 40 0 0 40 0 " fill="transparent"/>
-                          <path stroke="red" strokeWidth="39" d="M60 0 100 0 100 40 " fill="transparent" />
-                          <path stroke="red" strokeWidth="39" d="M0 60 0 100 40 100" fill="transparent" />
-                          <path stroke="red" strokeWidth="39" d="M60 100 100 100 100 60 " fill="transparent" />
-                      </svg>
-                  </div>
-                  <div>StudyCircle</div>
-              <div className="icon" onClick={function(e){open(e)}}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </div>
+      <div className="studySnapBody">
+        <div className="studySnapNavA">
+          <div className="studySnapNavATop">
+            <div className="studySnapNavATopTitle"><span>Study</span>Snap</div>
           </div>
-<div className="lsb-body"><div className="lsidebar-cont">
-  {
-    (function () {
-      const friendElements = [];
-
-      for (let i = 0; i < lSidebarContContent.length; i++) {
-        const friend = lSidebarContContent[i];
-        friendElements.push(
-          <div key={i} className="friend-li">
-            <div className="friend-img-cont">
-              <img src={imgUrl} alt="" />
-            </div>
-            <div className="friend-info-cont">
-              <div>
-                <div className="friend-info-name">{friend.firstName+" "+friend.lastName}</div>
-                <div className="friend-info-id">{friend.userName}</div>
+          <div className="studySnapNavAListBody">
+            <div className="studySnapNavAListElement">
+              <div className="imgContainer">
+                <img src={imgUrl} alt="" />
+              </div>
+              <div className="elementInfo">
+                <div>
+                  <div className="infoName">Digambar Kumbhar</div>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      }
-      return friendElements;
-    })()
-  }
-</div>
-
+            <div className="studySnapNavAListElement">
+              <div className="imgContainer">
+                <img src={imgUrl} alt="" />
+              </div>
+              <div className="elementInfo">
+                <div>
+                  <div className="infoName">Digambar Kumbhar</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="body">
+        <div className="studySnapBodyA">
+          <div className="contactList"></div>
+          <div className="chatAppBody">
           <div className="main">
-            <div className="chatMain">
                 <div className="chatHead">
-                    <div className="grid1">
-                        <div className="imgCont">
+                    <div className="gridA">
+                        <div className="imgContainer">
                           <img src={imgUrl} alt="" />
                         </div>
-                        <div className="detailsCont">
+                        <div className="detailsContainer">
                           <div className="name">Sundar pichai</div>
                           <div className="status">online</div>
                         </div>
@@ -198,10 +148,10 @@ export default function SCChatApp() {
                         </button>
                     </div>
                 </div>
-            </div>
+           
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

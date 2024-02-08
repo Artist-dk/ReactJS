@@ -21,31 +21,50 @@ db.connect((err) => {
   }
 });
 
-app.get('/users', (req, res) => {
+app.get('/messages', (req, res) => {
   // Use a parameterized query to prevent SQL injection
-  const sql = 'SELECT * FROM messages';
+  const sql = `SELECT 
+  m.id AS message_id,
+  m.message,
+  m.time,
+  sender.firstName AS sender_firstName,
+  sender.lastName AS sender_lastName,
+  receiver.firstName AS receiver_firstName,
+  receiver.lastName AS receiver_lastName
+FROM
+  messages m
+INNER JOIN
+  user sender ON m.sender = sender.id
+INNER JOIN
+  user receiver ON m.receiver = receiver.id 
+ORDER BY message_id ASC`;
 
   // Execute the query
-  db.query(sql, (err, msgData) => {
+  db.query(sql, (err, data) => {
     // Handle errors
     if (err) {
       console.error('Error executing SQL query:', err);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-    let sql = 'SELECT * FROM user'
-    db.query(sql, (e, userData)=> {
-      if(e) {
-        console.log('Error executing another query: '+err)
-        return res.status(500).json({ error: 'Internal Server Error' });
-      }
-      // combine data
-      const combinedData = {
-        msgData,
-        userData
-      }
-      // Send the result as JSON
-      return res.json(combinedData);
-    })
+    // Send the result as JSON
+    return res.json(data);
+  });
+});
+
+app.get('/users', (req, res) => {
+  // Use a parameterized query to prevent SQL injection
+  const sql = `SELECT *
+FROM user`;
+
+  // Execute the query
+  db.query(sql, (err, data) => {
+    // Handle errors
+    if (err) {
+      console.error('Error executing SQL query:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    // Send the result as JSON
+    return res.json(data);
   });
 });
 
