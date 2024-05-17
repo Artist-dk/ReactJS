@@ -14,6 +14,7 @@ import LiftingStateUp from './learn/LiftingStateUp';
 import Axios from './learn/Axios';
 import Bridge from './learn/Bridge';
 import ReadmeBuilder from './learn/ReadmeBuilder';
+import ReadmeRenderer from './learn/ReadmeRenderer';
 
 
 
@@ -23,7 +24,16 @@ import ReadmeBuilder from './learn/ReadmeBuilder';
 // import StudySnap from './learn/StudySnap';
 // import ChatApp from './learn/ChatApp';
 // import ScrollSnap from './learn/DesignComp/ScrollSnap';
+const readmeContent = `
+# My Project
 
+This is a description of my project.
+
+Here's an image: 
+![Image](https://i.pinimg.com/236x/49/f4/d8/49f4d8021fb9c0c88aee615fbd16c532.jpg)
+
+You can also use other Markdown features.
+`;
 function App() {
   return (
     <div className="App">
@@ -49,7 +59,10 @@ function App() {
       {/* <StudySnap /> */}
 
       {/* <Bridge /> */}
-      <ReadmeBuilder />
+      {/* <ReadmeBuilder /> */}
+
+
+      <ReadmeRenderer content={readmeContent}  />
     </div>
   );
 }
