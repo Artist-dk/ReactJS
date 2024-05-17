@@ -1,5 +1,8 @@
 // import logo from './logo.svg';
 // import './App.css';
+import './learn/TutorialBuilder.css';
+
+
 import Effect from './learn/Effect';
 import State from './learn/State';
 import State1 from './learn/State1';
@@ -13,7 +16,7 @@ import ReactFroms from './learn/ReactFroms';
 import LiftingStateUp from './learn/LiftingStateUp';
 import Axios from './learn/Axios';
 import Bridge from './learn/Bridge';
-import ReadmeBuilder from './learn/ReadmeBuilder';
+import TutorialBuilder from './learn/TutorialBuilder';
 import ReadmeRenderer from './learn/ReadmeRenderer';
 import MarkdownRenderer from './learn/MarkdownRenderer';
 
@@ -60,11 +63,11 @@ function App() {
       {/* <StudySnap /> */}
 
       {/* <Bridge /> */}
-      {/* <ReadmeBuilder /> */}
+      <TutorialBuilder />
 
 
       {/* <ReadmeRenderer content={readmeContent}  /> */}
-      <MarkdownRenderer  content={readmeContent} />
+      {/* <MarkdownRenderer  content={readmeContent} /> */}
     </div>
   );
 }
