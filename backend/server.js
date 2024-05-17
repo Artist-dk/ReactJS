@@ -8,8 +8,8 @@ app.use(cors())
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
-  database: 'scchatapp'
+  password: 'Root@123',
+  database: 'studycircle'
 }) 
 
 // Connect to the database
@@ -64,6 +64,7 @@ FROM user`;
       return res.status(500).json({ error: 'Internal Server Error' });
     }
     // Send the result as JSON
+    console.log(data)
     return res.json(data);
   });
 });

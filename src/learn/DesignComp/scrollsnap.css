@@ -1,0 +1,15 @@
+.scroll-container {
+  width: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory; /* Horizontal scroll snap */
+  white-space: nowrap; /* Ensure items stay in a single row */
+}
+
+.scroll-item {
+  scroll-snap-align: center; /* Center alignment for each scroll item */
+  display: inline-block;
+  width: 500px; /* Adjust according to your item size */
+  height: 100px; /* Adjust according to your item size */
+  border: 1px solid #ccc;
+  margin: 10px;
+}
