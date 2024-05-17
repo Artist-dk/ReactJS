@@ -15,6 +15,7 @@ import Axios from './learn/Axios';
 import Bridge from './learn/Bridge';
 import ReadmeBuilder from './learn/ReadmeBuilder';
 import ReadmeRenderer from './learn/ReadmeRenderer';
+import MarkdownRenderer from './learn/MarkdownRenderer';
 
 
 
@@ -62,7 +63,8 @@ function App() {
       {/* <ReadmeBuilder /> */}
 
 
-      <ReadmeRenderer content={readmeContent}  />
+      {/* <ReadmeRenderer content={readmeContent}  /> */}
+      <MarkdownRenderer  content={readmeContent} />
     </div>
   );
 }
