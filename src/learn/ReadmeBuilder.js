@@ -51,30 +51,64 @@ const ReadmeBuilderButton = styled.button`
   margin-top: 1rem;
 `;
 
+const ReadmeBuilderSection = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const ReadmeBuilderSectionTitle = styled.h3`
+  margin-bottom: 0.5rem;
+`;
+
+const ReadmeBuilderSectionInput = styled.input`
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+`;
+
 const ReadmeBuilder = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [installation, setInstallation] = useState('');
-  const [usage, setUsage] = useState('');
-  const [contributing, setContributing] = useState('');
+  const [sections, setSections] = useState([
+    { title: 'Installation', content: '' },
+    { title: 'Usage', content: '' },
+  ]);
+
+  const handleAddSection = () => {
+    setSections([...sections, { title: '', content: '' }]);
+  };
+
+  const handleRemoveSection = (index) => {
+    const newSections = [...sections];
+    newSections.splice(index, 1);
+    setSections(newSections);
+  };
+
+  const handleChangeSectionTitle = (index, event) => {
+    const newSections = [...sections];
+    newSections[index].title = event.target.value;
+    setSections(newSections);
+  };
+
+  const handleChangeSectionContent = (index, event) => {
+    const newSections = [...sections];
+    newSections[index].content = event.target.value;
+    setSections(newSections);
+  };
+
 
   const handleSave = () => {
+    // const title = ...; // Get content from component state
+    // const description = ...;
+    // const sections = ...; // Get sections array from component state
   
     const readmeContent = `# ${title}
   
     ${description}
   
-    ## Installation
+    ${sections.map((section) => `## ${section.title}
   
-    ${installation}
-  
-    ## Usage
-  
-    ${usage}
-  
-    ## Contributing
-  
-    ${contributing}
+    ${section.content}`).join('\n\n')}
     `;
   
     const blob = new Blob([readmeContent], { type: 'text/markdown' });
@@ -86,9 +120,7 @@ const ReadmeBuilder = () => {
     link.click();
   
     URL.revokeObjectURL(url); // Clean up memory leak
-    console.log('README content generated!');
   };
-
   return (
     <ReadmeBuilderContainer>
       <ReadmeBuilderTitle>README.md Builder</ReadmeBuilderTitle>
@@ -106,20 +138,34 @@ const ReadmeBuilder = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <ReadmeBuilderLabel htmlFor="installation">Installation:</ReadmeBuilderLabel>
-        <ReadmeBuilderTextarea
-          id="installation"
-          value={installation}
-          onChange={(e) => setInstallation(e.target.value)}
-        />
-        <ReadmeBuilderLabel htmlFor="usage">Usage:</ReadmeBuilderLabel>
-        <ReadmeBuilderTextarea id="usage" value={usage} onChange={(e) => setUsage(e.target.value)} />
-        <ReadmeBuilderLabel htmlFor="contributing">Contributing:</ReadmeBuilderLabel>
-        <ReadmeBuilderTextarea
-          id="contributing"
-          value={contributing}
-          onChange={(e) => setContributing(e.target.value)}
-        />
+
+        {sections.map((section, index) => (
+          <ReadmeBuilderSection key={index}>
+            <ReadmeBuilderSectionTitle>
+              {index + 1}. {section.title}
+            </ReadmeBuilderSectionTitle>
+            <ReadmeBuilderSectionInput
+              type="text"
+              placeholder="Section Title"
+              value={section.title}
+              onChange={(e) => handleChangeSectionTitle(index, e)}
+            />
+            <ReadmeBuilderTextarea
+              value={section.content}
+              onChange={(e) => handleChangeSectionContent(index, e)}
+            />
+            {sections.length > 1 && (
+              <button type="button" onClick={() => handleRemoveSection(index)}>
+                Remove Section
+              </button>
+            )}
+          </ReadmeBuilderSection>
+        ))}
+
+        <button type="button" onClick={handleAddSection}>
+          Add Section
+        </button>
+
         <ReadmeBuilderButton type="button" onClick={handleSave}>
           Save to README.md
         </ReadmeBuilderButton>
