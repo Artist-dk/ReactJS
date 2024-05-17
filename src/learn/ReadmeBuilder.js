@@ -66,16 +66,23 @@ const ReadmeBuilderSectionInput = styled.input`
   margin-bottom: 0.5rem;
 `;
 
+const ReadmeBuilderImageInput = styled.input`
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+`;
+
 const ReadmeBuilder = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [sections, setSections] = useState([
-    { title: 'Installation', content: '' },
-    { title: 'Usage', content: '' },
+    { title: 'Installation', content: '', image: '' },
+    { title: 'Usage', content: '', image: '' },
   ]);
 
   const handleAddSection = () => {
-    setSections([...sections, { title: '', content: '' }]);
+    setSections([...sections, { title: '', content: '', image: '' }]);
   };
 
   const handleRemoveSection = (index) => {
@@ -96,6 +103,11 @@ const ReadmeBuilder = () => {
     setSections(newSections);
   };
 
+  const handleChangeSectionImage = (index, event) => {
+    const newSections = [...sections];
+    newSections[index].image = event.target.value;
+    setSections(newSections);
+  };
 
   const handleSave = () => {
     // const title = ...; // Get content from component state
@@ -107,6 +119,8 @@ const ReadmeBuilder = () => {
     ${description}
   
     ${sections.map((section) => `## ${section.title}
+  
+    ${section.image ? `![${section.title} image](${section.image})` : ''}
   
     ${section.content}`).join('\n\n')}
     `;
@@ -121,6 +135,8 @@ const ReadmeBuilder = () => {
   
     URL.revokeObjectURL(url); // Clean up memory leak
   };
+  
+
   return (
     <ReadmeBuilderContainer>
       <ReadmeBuilderTitle>README.md Builder</ReadmeBuilderTitle>
@@ -153,6 +169,16 @@ const ReadmeBuilder = () => {
             <ReadmeBuilderTextarea
               value={section.content}
               onChange={(e) => handleChangeSectionContent(index, e)}
+            />
+            <ReadmeBuilderLabel htmlFor={`image-input-${index}`}>
+              Image URL (optional):
+            </ReadmeBuilderLabel>
+            <ReadmeBuilderImageInput
+              id={`image-input-${index}`}
+              type="url"
+              placeholder="Enter image URL"
+              value={section.image}
+              onChange={(e) => handleChangeSectionImage(index, e)}
             />
             {sections.length > 1 && (
               <button type="button" onClick={() => handleRemoveSection(index)}>
