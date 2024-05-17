@@ -96,7 +96,6 @@ const ReadmeBuilder = () => {
     newSections[index].title = event.target.value;
     setSections(newSections);
   };
-
   const handleChangeSectionContent = (index, event) => {
     const newSections = [...sections];
     newSections[index].content = event.target.value;
